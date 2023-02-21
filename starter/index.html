@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    /*.attribution { font-size: 11px; text-align: center; }*/
+    /*.attribution a { color: hsl(228, 45%, 44%); }*/
+    @font-face {
+      font-family: HankenGrotesk-VariableFont_wght;
+      src: url("assets/fonts/HankenGrotesk-VariableFont_wght.ttf");
+    }
+    body{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      position: static;
+      display: flex;
+      height: initial;
+      background-color: white;
+    }
+    body span{
+      font-family: HankenGrotesk-VariableFont_wght,serif;
+    }
+    .Result_summary_component{
+      position: absolute;
+      width: 740px;
+      height: 510px;
+      display: flex;
+      top: 20%;
+      left: 25%;
+      flex-flow: row;
+      align-items: center;
+      background-color: white;
+      border-radius: 50px;
+      box-shadow: 5px 5px 20px #cbc5fb;
+    }
+
+    .result span{
+      color: #CBC5FB;
+      font-size: 25px;
+    }
+    .result{
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 50%;
+      background-image: linear-gradient(to bottom,#6245F5, #302CE1);
+      /*background-color: #563EF0;*/
+      height: 100%;
+      border-radius: 30px;
+      font-weight: bold;
+      word-spacing: 1.5px;
+    }
+    .total>span{
+      font-size: 17px;
+      letter-spacing: 0.5px;
+    }
+    .point{
+      /*border: 1px solid yellow;*/
+      border-radius: 100px;
+      background-image: linear-gradient(to bottom, #4623C0,#4536E8);
+      outline-color: #5a00f2;
+    }
+    .point div:nth-child(2)>span{
+      color: rgba(255, 255, 255, 0.50);
+    }
+    .point div:first-child>span{
+      font-size: 60px;
+      color: #FFFFFE
+    }
+    .point>div{
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 200px;
+    }
+    .Great_content>span{
+      color: #FFFFFE;
+      opacity: 0.96;
+      font-size: 30px;
+    }
+    .content-inform>span{
+      font-size: 18px;
+      /*text-wrap: initial;*/
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      align-items: center;
+      /*line-height: 23px;*/
+      text-align: center;
+    }
+    .content-inform{
+      word-spacing: 1px;
+      width: 67%;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+    .summary>div{
+      width: 80%;
+    }
+    .summary{
+      height: 100%;
+      width: 50%;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    .summary-text>span{
+      font-size: 25px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.65);
+    }
+    /*.all-avtivitive{*/
+    /*  */
+    /*}*/
+    .all-activitive *{
+      font-size: 25px;
+    }
+    .all-activitive>div span{
+      font-weight: bold;
+    }
+    .all-activitive>div{
+      height: 55px;
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 17px;
+      display: flex;
+      align-items: center;
+      /*justify-content: space-around;*/
+      position: relative;
+    }
+    .Reaction{
+      background-color: #FDF6F5;
+      color: #ed3b3b;
+    }
+    .Memory{
+      background-color: #FEFBF3;
+      color: rgb(255, 178, 30);
+    }
+    .Verbal{
+      background-color: #F4FBFA;
+      color: #5BAE92;
+    }
+    .Visual{
+      background-color: #F3F3FC;
+      margin-bottom: 0;
+      color: #1D228C
+    }
+    .continue-btn{
+      width: 100%;
+      height: 55px;
+      margin-top: -10px;
+    }
+    .continue-btn>button>span{
+      color: white;
+      font-size: 20px;
+    }
+    .continue-btn>button{
+      height: 100%;
+      width: 100%;
+      border-radius: 50px;
+      border: none;
+      background-color: #323B57;
+    }
+    .continue-btn>button:hover{
+      background-image: linear-gradient(to bottom,#6044F5,#2E2CDE);
+      cursor: pointer;
+    }
+
+    .name-and-image img{
+      margin-right: 10px;
+      height: 20px;
+    }
+    .name-and-image{
+      display: flex;
+      align-items: center;
+      line-height: 0;
+      margin-left: 10px;
+    }
+    .name-and-image span{
+      font-size: 22px;
+    }
+    .percent>span:first-child{
+      color: rgba(0, 0, 0, 0.65);
+      font-weight: bold;
+    }
+    .percent>span:last-child{
+      color: rgba(0, 0, 0, 0.3)
+    }
+    .percent{
+      position: absolute;
+      right: 10px
+    }
+  @media screen and (max-width: 768px) {
+    body{
+      height: auto;
+    }
+    .Result_summary_component{
+      width: 375px;
+      height: 100%;
+      flex-flow: column;
+      border-radius: 0;
+    }
+    .result{
+      width: 100%;
+      height: 360px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .result>div:first-child>span{
+      font-size: 20px;
+    }
+    .summary{
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      height: 460px
+    }
+    .point{
+      width: 140px;
+      height: 140px
+    }
+    .point>div{
+      width: 140px;
+      height: 140px
+    }
+
+    .point div:first-child>span{
+      font-size: 40px;
+    }
+    .point div:nth-child(2)>span{
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .Great_content>span{
+      font-size: 25px;
+    }
+    .content-inform>span{
+      font-size: 15px;
+      color: rgba(253, 246, 245, 0.7);
+    }
+    .summary-text>span{
+      font-size: 20px;
+    }
+    .name-and-image span{
+      font-size: 20px;
+    }
+    .percent span{
+      font-size: 20px;
+    }
+    .name-and-image img{
+      height: 20px
+    }
+    .continue-btn>span{
+      font-size: 20px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="Result_summary_component">
+    <div class="result">
+      <div><span>Your Result</span></div>
+      <div class="point">
+        <div>
+          <div><span>76</span></div>
+          <div class="total">
+            <span>of 100</span>
+          </div>
+        </div>
+      </div>
+      <div class="Great_content">
+        <span>Great</span>
+      </div>
+      <div class="content-inform ">
+        <span>You scored higher than 65% of the people who have taken these tests.</span>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="summary-text">
+        <span>Summary</span>
+      </div>
+      <div class="all-activitive">
+        <div class="Reaction">
+          <div class="name-and-image">
+            <div><img src="assets/images/icon-reaction.svg" alt=""></div>
+            <div><span>Reaction</span></div>
+          </div>
+          <div class="percent">
+            <span>80</span>
+            <span class="total-point">/ 100</span>
+          </div>
+        </div>
+        <div class="Memory">
+          <div class="name-and-image">
+            <div><img src="assets/images/icon-memory.svg" alt=""></div>
+            <div><span>Memory</span></div>
+          </div>
+          <div class="percent">
+            <span>92</span>
+            <span class="total-point">/ 100</span>
+          </div>
+        </div>
+        <div class="Verbal">
+          <div class="name-and-image">
+            <div><img src="assets/images/icon-verbal.svg" alt=""></div>
+            <div><span>Verbal</span></div>
+          </div>
+          <div class="percent">
+            <span>61</span>
+            <span class="total-point">/ 100</span>
+          </div>
+        </div>
+        <div class="Visual">
+          <div class="name-and-image">
+            <div><img src="assets/images/icon-visual.svg" alt=""></div>
+            <div><span>Visual</span></div>
+          </div>
+          <div class="percent">
+            <span>72</span>
+            <span class="total-point">/ 100</span>
+          </div>
+        </div>
+      </div>
+      <div class="continue-btn">
+        <button type="submit"><span>Continue</span></button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
